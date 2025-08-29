@@ -94,7 +94,7 @@ rollBtn.addEventListener("click", () => {
     updateLevel(position);
   }
 
-  if (position >= boxes.length) {
+  if (position === 41) {
     position = boxes.length - 1;
     showToast("Game Over!☠️");
     scoreEl.textContent = "0";
