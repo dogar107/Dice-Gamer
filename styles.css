@@ -473,21 +473,6 @@ position: relative;
 }
 
 
-
-#safezone{
-display: block;
-    color: whitesmoke;
-    position: relative;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    background-color: gray;
-    border: 2px groove green;
-}
-
-
-
-
 .box-list {
   display: grid;
   grid-template-columns: repeat(6, 64px); 
