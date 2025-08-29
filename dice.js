@@ -170,8 +170,10 @@ function updateVisibleBoxes(level) {
     },1000)
   }else if(position >=boxes.length){
   showToast("You Win! 🎌");
-  gameStarted=false;
+  circleDiv.style.display="none";
   scoreEl.textContent="0";
+  resetGame()
+  game.reset()
   }
 }
 }
