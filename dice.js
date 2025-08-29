@@ -150,20 +150,15 @@ function updateVisibleBoxes(level) {
     const currentBox = boxes[position];
   if (currentBox && currentBox.id === "trap") {
     currentBox.style.backgroundColor = "red";
-    currentBox.textContent="X";
     setTimeout(()=>{
     currentBox.style.backgroundColor = "";
     customAlert.style.display="block"
+    resetGame()
+    scoreEl.textContent="0"
     },1000)
     showToast("You landed on a TRAP! ☠️");
    
     
-    setTimeout(()=>{
-    resetGame();
-      scoreEl.textContent="0"
-      game.reset()
-
-    },1000)
       } else if (currentBox && currentBox.id === "safezone") {
     currentBox.style.backgroundColor = "green";
     showToast("Safe Zone ☘️ ");
