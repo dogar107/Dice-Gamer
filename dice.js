@@ -153,6 +153,14 @@ function updateVisibleBoxes(level) {
     setTimeout(()=>{
     currentBox.style.backgroundColor = "";
     customAlert.style.display="block"
+    okBtn.onclick = () => {
+      customAlert.style.display = "none";
+      resetGame();
+    };
+
+    cancelBtn.onclick = () => {
+      customAlert.style.display = "none";
+    };
     resetGame()
     scoreEl.textContent="0"
     },1000)
