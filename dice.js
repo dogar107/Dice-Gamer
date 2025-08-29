@@ -94,8 +94,8 @@ rollBtn.addEventListener("click", () => {
     updateLevel(position);
   }
 
-  if (position === 41) {
-    position = boxes.length - 1;
+  if (position >= boxes.length) {
+    position=boxes.length-1
     showToast("Game Over!☠️");
     scoreEl.textContent = "0";
     game.reset();
@@ -174,7 +174,7 @@ function updateVisibleBoxes(level) {
     setTimeout(()=>{
     currentBox.style.backgroundColor = "";
     },1000)
-  }else if(position >=boxes.length){
+  }else if(position===41){
   showToast("You Win! 🎌");
   circleDiv.style.display="none";
   scoreEl.textContent="0";
