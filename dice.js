@@ -177,6 +177,7 @@ function updateVisibleBoxes(level) {
   showToast("You Win! 🎌");
   circleDiv.style.display="none";
   scoreEl.textContent="0";
+  customAlert1.style.display="block";
   resetGame()
   game.reset()
   }
