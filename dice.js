@@ -146,7 +146,7 @@ function updateVisibleBoxes(level) {
   }
 
   for (let i = start; i <= end && i <boxes.length ; i++) {
-    //boxlist.appendChild(allBoxes[i]);
+    boxlist.appendChild(allBoxes[i]);
     const currentBox = boxes[position];
   if (currentBox && currentBox.id === "trap") {
     currentBox.style.backgroundColor = "red";
@@ -156,9 +156,12 @@ function updateVisibleBoxes(level) {
     currentBox.textContent=i;
     },1000)
     showToast("You landed on a TRAP! ☠️");
+    circleDiv.style.display="none";
     setTimeout(() => {
       resetGame();
-    }, 5000);
+      scoreEl.textContent="0"
+      game.reset()
+    }, 1000);
   } else if (currentBox && currentBox.id === "safezone") {
     currentBox.style.backgroundColor = "green";
     showToast("Safe Zone ☘️ ");
