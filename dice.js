@@ -154,8 +154,8 @@ function updateVisibleBoxes(level) {
     currentBox.style.backgroundColor = "";
     customAlert.style.display="block"
     okBtn.onclick = () => {
-      customAlert.style.display = "none";
-      resetGame();
+    customAlert.style.display = "none";
+    resetGame();
     };
 
     cancelBtn.onclick = () => {
