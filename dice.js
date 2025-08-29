@@ -192,7 +192,7 @@ function updateLevel(pos) {
     level = 3;
   } else if (pos===10 || pos >= 11) {
     level = 2;
-  }else if(pos===0){
+  }else if(pos===0 || pos >=0){
     level = 1
   }
   Level.textContent = level;
