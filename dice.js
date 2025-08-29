@@ -167,8 +167,7 @@ function updateVisibleBoxes(level) {
     },1000)
     showToast("You landed on a TRAP! ☠️");
    
-    
-      } else if (currentBox && currentBox.id === "safezone") {
+    } else if (currentBox && currentBox.id === "safezone") {
     currentBox.style.backgroundColor = "green";
     showToast("Safe Zone ☘️ ");
     setTimeout(()=>{
