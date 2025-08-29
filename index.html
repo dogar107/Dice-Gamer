@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Dice New Game</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+</head>
+<body>
+
+  <div class="me">
+    <h1 class="heading" id="heading">🎲 Dice Game</h1>
+    <button class="logout" id="quit">
+      <span class="material-symbols-outlined">logout</span>
+    </button>
+    </div>
+  
+
+  
+  <div id="btn">
+    <button class="btn1" id="rollbtn">Roll Dice</button>
+    <button class="btn2" id="reset">Reset</button>
+
+    <div class="totalscore" id="totalscore">
+      <h1 class="total" id="total">Total new Score:</h1>
+      <h2 id="score" class="score">0</h2>
+      <h3 class="level" style="color: whitesmoke;" id="level">Level:</h3>
+      <h4 id="levelscore" class="levelscore" style="color: whitesmoke;"></h4>
+    </div>
+
+    <p class="p2" id="p2">🔴 Red shows you are in danger</p>
+    <p class="p3" id="p3">🟢 Green shows you are in a safe zone</p>
+
+    <div class="dice" id="empty"></div>
+
+    <div id="dice0" class="dice firstface">
+      <span class="dot center"></span>
+    </div>
+
+    <div id="dice1" class="dice secondface">
+      <span class="dot top-left"></span>
+      <span class="dot bottom-right"></span>
+    </div>
+
+    <div id="dice2" class="dice thirdface">
+      <span class="dot top-left"></span>
+      <span class="dot center"></span>
+      <span class="dot bottom-right"></span>
+    </div>
+
+    <div id="dice3" class="dice fourthface">
+      <span class="dot top-left"></span>
+      <span class="dot top-right"></span>
+      <span class="dot bottom-left"></span>
+      <span class="dot bottom-right"></span>
+    </div>
+
+    <div id="dice4" class="dice fifthface">
+      <span class="dot top-left"></span>
+      <span class="dot top-right"></span>
+      <span class="dot center"></span>
+      <span class="dot bottom-left"></span>
+      <span class="dot bottom-right"></span>
+    </div>
+
+    <div id="dice5" class="dice sixthface">
+      <span class="dot top-left"></span>
+      <span class="dot top-right"></span>
+      <span class="dot center-left"></span>
+      <span class="dot center-right"></span>
+      <span class="dot bottom-left"></span>
+      <span class="dot bottom-right"></span>
+    </div>
+  </div>
+
+  
+  <div id="snackbar"></div>
+  <div class="boards" id="boards">
+ 
+   
+    <div id="customAlert" class="alert-hidden">
+      <p id="alertMessage">🎮 Game Over! <br> Do you want to play again</p>
+      <button id="okBtn">OK</button>
+      <button id="cancelBtn">Cancel</button>
+    </div>
+
+
+  <div id="customAlert1" class="alert-hidden">
+      <div class="bg">
+      <h1 id="alertMessage1" >🎲 Dice Game</h1>
+      <p class="p9">Dice Game is a nice game for beginners to play!</p>
+      <button id="startBtn">Start</button>
+      
+      
+    </div>
+    </div>
+    
+    <div class="board" id="ii">
+      <ul class="box-list">
+      <li class="box"  >
+      <div class="Circle" id="circle"></div>
+      </li>
+      <li class="box">1</li>
+  <li class="box" >2</li>
+  <li class="box" >3</li>
+  <li class="box" >4</li>
+  <li class="box" id="safezone">5</li>
+
+  <li class="box" id="trap"> 6</li>
+  <li class="box" >7</li>
+  <li class="box" id="safezone">8</li>
+  <li class="box" >9</li>
+  <li class="box"  >10</li>
+
+  <li class="box" id="trap">11</li>
+  <li class="box" id="safezone">12</li>
+  <li class="box" >13</li>
+  <li class="box" >14</li>
+  <li class="box" id="safezone">15</li>
+
+  <li class="box" id="trap"> 16</li>
+  <li class="box" >17</li>
+  <li class="box" id="safezone">18</li>
+  <li class="box" >19</li>
+  <li class="box" >20</li>
+
+  <li class="box" id="trap"> 21</li>
+  <li class="box" id="safezone">22</li>
+  <li class="box" >23</li>
+  <li class="box" >24</li>
+  <li class="box" id="safezone">25</li>
+
+  <li class="box" id="trap">26</li>
+  <li class="box" >27</li>
+  <li class="box" id="safezone">28</li>
+  <li class="box" >29</li>
+  <li class="box" >30</li>
+
+  <li class="box" id="trap">31</li>
+  <li class="box" id="safezone">32</li>
+  <li class="box" >33</li>
+  <li class="box" >34</li>
+  <li class="box" id="safezone">35</li>
+
+  <li class="box" id="trap">36</li>
+  <li class="box" >37</li>
+  <li class="box" >38</li>
+  <li class="box" id="trap" >39</li>
+  <li class="box" id="safezone"  >40</li>
+  <li class="box"></li>
+</ul>
+
+    </div>
+  </div>
+
+  <script src="dice.js"></script>
+</body>
+</html>
