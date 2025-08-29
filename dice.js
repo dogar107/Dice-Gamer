@@ -153,10 +153,11 @@ function updateVisibleBoxes(level) {
     currentBox.textContent="X";
     setTimeout(()=>{
     currentBox.style.backgroundColor = "";
-    currentBox.textContent=i;
+    customAlert.style.display="block"
     },1000)
     showToast("You landed on a TRAP! ☠️");
-    circleDiv.style.display="none";
+   
+    
     setTimeout(()=>{
     resetGame();
       scoreEl.textContent="0"
