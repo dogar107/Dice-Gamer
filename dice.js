@@ -146,7 +146,7 @@ function updateVisibleBoxes(level) {
   }
 
   for (let i = start; i <= end && i <boxes.length ; i++) {
-    boxlist.appendChild(allBoxes[i]);
+    //boxlist.appendChild(allBoxes[i]);
     const currentBox = boxes[position];
   if (currentBox && currentBox.id === "trap") {
     currentBox.style.backgroundColor = "red";
