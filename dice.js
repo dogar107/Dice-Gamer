@@ -157,6 +157,7 @@ function updateVisibleBoxes(level) {
     updateVisibleBoxes(1);
     },1000)
     showToast("You landed on a TRAP! ☠️");
+    resetGame()
     //game.reset;
    
     } else if (currentBox && currentBox.id === "safezone") {
