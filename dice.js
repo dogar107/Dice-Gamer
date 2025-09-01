@@ -37,6 +37,7 @@ const okBtn = document.getElementById("okBtn");
 const cancelBtn = document.getElementById("cancelBtn");
 const traps=document.getElementById("trap");
 const boxes = document.querySelectorAll(".box");
+const allBoxes=Array.from(boxlist);
 
 customAlert1.style.display = "block";
 startBtn.onclick = () => {
@@ -149,11 +150,14 @@ function updateVisibleBoxes(level) {
       box.textContent=`${i}`
       boxlist.appendChild(box);
       
+  
+      }
+      
 
 
  }
- const allBoxes=Array.from("div")
-  for (let i = start; i <= end && i <allBoxes.length ; i++) {
+ 
+  for (let i = start; i <= end && i <totalboxes ; i++) {
    boxlist.appendChild(allBoxes[i]);
     const currentBox = allBoxes[position];
   if (currentBox && currentBox.id === "trap") {
