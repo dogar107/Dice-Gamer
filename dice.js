@@ -156,7 +156,8 @@ function updateVisibleBoxes(level) {
     scoreEl.textContent="0"
     },1000)
     showToast("You landed on a TRAP! ☠️");
-    resetGame()
+    resetGame();
+    //game.reset;
    
     } else if (currentBox && currentBox.id === "safezone") {
     currentBox.style.backgroundColor = "green";
