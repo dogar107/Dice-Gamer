@@ -141,21 +141,26 @@ function updateVisibleBoxes(level) {
     end = 42;
   }
 
+
   while (boxlist.firstChild) {
     boxlist.removeChild(boxlist.firstChild);
   }
  for(let i = 1;i<totalboxes;i++){
- const box = document.createElement('div');
+ const box = document.createElement("li");
       box.className = "box";
       box.textContent=`${i}`
       boxlist.appendChild(box);
-      
+      if(boxlist.firstChild){
+      boxlist.firstChild.textContent=""
+      }
+     
   
       }
+    }
       
 
 
- }
+ 
  
   for (let i = start; i <= end && i <totalboxes ; i++) {
    boxlist.appendChild(allBoxes[i]);
@@ -187,7 +192,7 @@ function updateVisibleBoxes(level) {
   game.reset()
   }
 }
-}
+
 
 function updateLevel(pos) {
   let level = "";
