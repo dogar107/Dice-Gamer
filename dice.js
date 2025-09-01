@@ -145,14 +145,14 @@ function updateVisibleBoxes(level) {
   }
  for(let i = 1;i<totalboxes;i++){
  const box = document.createElement('div');
-      box.className = 'box';
-      box.appendChild(document.createTextNode(`${i}`));
+      box.className = "box";
+      box.textContent=`${i}`
       boxlist.appendChild(box);
       
 
 
  }
-   const allBoxes = Array.from(box);
+ const allBoxes=Array.from("div")
   for (let i = start; i <= end && i <allBoxes.length ; i++) {
    boxlist.appendChild(allBoxes[i]);
     const currentBox = allBoxes[position];
