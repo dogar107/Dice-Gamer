@@ -19,9 +19,7 @@ let position = 0;
 let gameStarted = false;
 const totalboxes = 42;
 const rollBtn = document.getElementById("rollbtn");
-const boxes = document.querySelectorAll(".box");
-const boxlist = document.querySelector(".box-list");
-const allBoxes = Array.from(boxes); 
+const boxlist = document.querySelector(".box-list"); 
 const scoreEl = document.getElementById("score");
 const circleDiv = document.getElementById("circle");
 const resetbtn = document.getElementById("reset");
@@ -38,6 +36,7 @@ const startBtn = document.getElementById("startBtn");
 const okBtn = document.getElementById("okBtn");
 const cancelBtn = document.getElementById("cancelBtn");
 const traps=document.getElementById("trap");
+const boxes = document.querySelectorAll(".box");
 
 customAlert1.style.display = "block";
 startBtn.onclick = () => {
@@ -144,10 +143,19 @@ function updateVisibleBoxes(level) {
   while (boxlist.firstChild) {
     boxlist.removeChild(boxlist.firstChild);
   }
+ for(let i = 1;i<totalboxes;i++){
+ const box = document.createElement('div');
+      box.className = 'box';
+      box.appendChild(document.createTextNode(`${i}`));
+      boxlist.appendChild(box);
+      
 
-  for (let i = start; i <= end && i <boxes.length ; i++) {
-    boxlist.appendChild(allBoxes[i]);
-    const currentBox = boxes[position];
+
+ }
+   const allBoxes = Array.from(box);
+  for (let i = start; i <= end && i <allBoxes.length ; i++) {
+   boxlist.appendChild(allBoxes[i]);
+    const currentBox = allBoxes[position];
   if (currentBox && currentBox.id === "trap") {
     currentBox.style.backgroundColor = "red";
     gameStarted=true;
