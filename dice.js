@@ -44,18 +44,17 @@ for(let i = 0; i < totalboxes; i++){
   box.className = "box";
   box.textContent = i;
 
-  if(safeZones.includes(i)){
   if(safeZones.includes(position)){
-  box.style.backgroundColor="green"
-  setTimeout(()=> {
-  box.style.backgroundColor=""
-  },1000)
+  boxes.style.backgroundColor="green"
+  }else{
+  boxes.style.backgroundColor=""
   }
   
-  }
   boxes.push(box);
   boxlist.appendChild(box);
+
 }
+
 
 
 const allBoxes = boxes;
