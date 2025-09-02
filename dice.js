@@ -52,6 +52,7 @@ for(let i = 0; i < totalboxes; i++){
   box.style.border="2px dashed red"
   position=0;
   scoreEl.textContent="0";
+  showToast("Oh no You landed on trap!")
   }
 
   
