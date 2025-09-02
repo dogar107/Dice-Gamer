@@ -43,14 +43,15 @@ for(let i = 0; i < totalboxes; i++){
   const box = document.createElement("li");
   box.className = "box";
   box.textContent = i;
-  if (trapsPositions.includes(i) && boxes[position]===trapsPositions) {
-  box.classList.add("trap");
-  setTimeout(()=>{
-  box.classList.remove("trap")
-  },1000)
-  } 
+
   if(safeZones.includes(i)){
- game.score+=5
+  if(safeZones.includes(position)){
+  box.style.backgroundColor="green"
+  setTimeout(()=> {
+  box.style.backgroundColor=""
+  },1000)
+  }
+  
   }
   boxes.push(box);
   boxlist.appendChild(box);
@@ -182,10 +183,6 @@ if (boxes[position].classList.contains("trap")) {
   showToast("Oh no! You landed on a trap ☠️");
   position = 0;
   scoreEl.textContent = "0";
-  boxes[position].classList.add("trap");
-  setTimeout(()=> {
-  boxes[position].classList.remove("trap")
-  },1000)
 } else if (boxes[position].classList.contains("safezone")) {
   showToast("🟢 Safe Zone!");
   boxes[position].classList.add("safezone");
