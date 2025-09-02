@@ -162,17 +162,19 @@ function updateVisibleBoxes(level) {
 function updateLevel(pos) {
   let level = 1;
 
-  if (pos >= 31) {
+  if (pos===31||pos >= 31) {
     level = 4;
-  } else if (pos >= 21) {
+  } else if (pos===21||pos >= 21) {
     level = 3;
-  } else if (pos >= 11) {
+  } else if (pos===11||pos >= 11) {
     level = 2;
   }
 
   Level.textContent = level;
   updateVisibleBoxes(level, pos);
 }
+
+
 
 function showToast(message) {
   const x = document.getElementById("snackbar");
