@@ -52,6 +52,8 @@ for(let i = 0; i < totalboxes; i++){
 
 const allBoxes = boxes;
 
+updateVisibleBoxes(1)
+
 customAlert1.style.display = "block";
 
 startBtn.onclick = () => {
