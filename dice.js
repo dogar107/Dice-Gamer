@@ -45,9 +45,9 @@ for(let i = 0; i < totalboxes; i++){
   box.textContent = i;
 
   if(safeZones.includes(position)){
-  boxes.style.backgroundColor="green"
+  box.classList.add("safezone")
   }else{
-  boxes.style.backgroundColor=""
+  box.classList.remove("safezone")
   }
   
   boxes.push(box);
