@@ -47,16 +47,7 @@ for(let i = 0; i < totalboxes; i++){
   box.className = "box";
   box.textContent = i;
   if (trapsPositions.includes(i)) {
-    box.classList.remove('traps')
-    setTimeout(()=>{
-     box.classList.add('traps')
-     },1000)
     scoreEl.textContent="0";
-  }else if (safeZones.includes(i)){
-     box.classList.remove('safezone');
-     setTimeout(()=>{
-     box.classList.add('safezone')
-     },1000)
   }
   boxes.push(box);
   boxlist.appendChild(box);
@@ -68,20 +59,13 @@ customAlert1.style.display = "block";
 
 startBtn.onclick = () => {
   customAlert1.style.display = "none";
-  btn.style.filter = "none";
-  totalscore.style.filter = "none";
-  dice0.style.filter = "none";
-  board.style.filter = "none";
 
   updateVisibleBoxes(1, position);
 };
 
 quit.onclick = () => {
   customAlert1.style.display = "block";
-  btn.style.filter = "blur(5px)";
-  totalscore.style.filter = "blur(5px)";
-  dice0.style.filter = "blur(5px)";
-  board.style.filter = "blur(5px)";
+
 };
 
 function resetGame() {
@@ -138,11 +122,11 @@ rollBtn.addEventListener("click", () => {
     };
   }
 
-   if (boxes[position].classList.contains('trap')) {
-      showToast("☠️ Trap! Back to Start.");
+   if (boxes[position].classList.contains('traps')) {
+      showToast("Oh no You landed on trap! ☠️");
       position = 0;
-      game.score = 0;
-    } else if (boxes[position].classList.contains('safe-zone')) {
+      scoreEl.textContent = "0";
+    } else if (boxes[position].classList.contains('safezone')) {
       showToast("🟢 Safe Zone!");
     }
 
@@ -172,7 +156,7 @@ function updateVisibleBoxes(level) {
   else if (level === 4) maxIndex = 41;
 
   
- // maxIndex = Math.max(maxIndex, currentPosition + 2);
+
 
  
   for(let i = 0; i <= maxIndex && i < totalboxes; i++) {
@@ -195,15 +179,7 @@ function updateLevel(pos) {
   updateVisibleBoxes(level, pos);
 }
 
-if (trapsPositions.includes(position)) {
-  showToast("You landed on a TRAP! ☠️");
-  position = 0;      
-  game.reset();      
-  scoreEl.textContent = "0";
-  updateLevel(position);
-  updateVisibleBoxes(1);
-  circleDiv.style.display = "block";       
-}
+
 
 if (safeZones.includes(position)) {
   showToast("Safe Zone! 🟢");
