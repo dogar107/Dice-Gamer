@@ -174,6 +174,22 @@ function updateLevel(pos) {
   updateVisibleBoxes(level, pos);
 }
 
+if (trapsPositions.includes(position)) {
+  showToast("You landed on a TRAP! ☠️");
+  position = 0;      
+  game.reset();      
+  scoreEl.textContent = "0";
+  updateLevel(position);
+  updateVisibleBoxes(1);
+  circleDiv.style.display = "block";       
+}
+
+if (safeZones.includes(position)) {
+  showToast("Safe Zone! 🟢");
+
+}
+
+
 function showToast(message) {
   const x = document.getElementById("snackbar");
   x.textContent = message;
