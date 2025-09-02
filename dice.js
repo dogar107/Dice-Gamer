@@ -35,6 +35,9 @@ const quit = document.getElementById("quit");
 const startBtn = document.getElementById("startBtn");
 const okBtn = document.getElementById("okBtn");
 const cancelBtn = document.getElementById("cancelBtn");
+const trapsPositions = [5, 12, 19, 27, 35]; 
+const safeZones = [3, 8, 15, 22, 30];   
+
 
 const boxes = []; 
 
