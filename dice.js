@@ -32,8 +32,7 @@ const quit = document.getElementById("quit");
 const startBtn = document.getElementById("startBtn");
 const okBtn = document.getElementById("okBtn");
 const cancelBtn = document.getElementById("cancelBtn");
-const trapsPositions = [2,3,7,9,12,16,20,28,39]; 
-const safeZones = [5, 8, 15, 22, 29, 40];   
+const trapsPositions = [2,3,7,9,12,16,20,22,25,28,31,35,37,39];    
 
 
 const boxes = []; 
@@ -44,13 +43,13 @@ for(let i = 0; i < totalboxes; i++){
   box.className = "box";
   box.textContent = i;
 
-  if(trapsPositions.includes(i) && trapsPositions.includes(position)){
-  box.classList.remove("trap");
-  setTimeout(()=>{
-   box.classList.add("trap")
-  },1000)
+  if(trapsPositions.includes(i)){
+  //box.classList.remove("trap");
+  //setTimeout(()=>{
+   //box.classList.add("trap")
+  //},1000)
   
-  //box.style.border="2px dashed red"
+  box.style.border="2px dashed red"
   position=0;
   scoreEl.textContent="0";
   }
@@ -60,10 +59,6 @@ for(let i = 0; i < totalboxes; i++){
   boxlist.appendChild(box);
 
 }
-
-
-
-
 
 const allBoxes = boxes;
 
@@ -183,12 +178,6 @@ function updateLevel(pos) {
   Level.textContent = level;
   updateVisibleBoxes(level, pos);
 }
-
-
-
-
-
-
 
 function showToast(message) {
   const x = document.getElementById("snackbar");
