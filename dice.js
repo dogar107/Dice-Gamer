@@ -43,12 +43,19 @@ for(let i = 0; i < totalboxes; i++){
   const box = document.createElement("li");
   box.className = "box";
   box.textContent = i;
-  if (trapsPositions.includes(i)) {
-    scoreEl.textContent="0";
+  if (trapsPositions.includes(i) && boxes[position]===trapsPositions) {
+  box.classList.add("trap");
+  setTimeout(()=>{
+  box.classList.remove("trap")
+  },1000)
+  } 
+  if(safeZones.includes(i)){
+ game.score+=5
   }
   boxes.push(box);
   boxlist.appendChild(box);
 }
+
 
 const allBoxes = boxes;
 
@@ -120,15 +127,6 @@ rollBtn.addEventListener("click", () => {
       customAlert.style.display = "none";
     };
   }
-
-   if (boxes[position].classList.contains('traps')) {
-      showToast("Oh no You landed on trap! ☠️");
-      position = 0;
-      scoreEl.textContent = "0";
-    } else if (boxes[position].classList.contains('safezone')) {
-      showToast("🟢 Safe Zone!");
-    }
-
  
   for (let i = 0; i < 6; i++) {
     const el = document.getElementById(`dice${i}`);
@@ -148,7 +146,6 @@ function updateVisibleBoxes(level) {
     boxlist.removeChild(boxlist.firstChild);
   }
 
- 
   let maxIndex = 10; 
   if (level === 2) {
   maxIndex = 20;
@@ -158,7 +155,6 @@ function updateVisibleBoxes(level) {
 }else if (level === 4) {
   maxIndex = 41;
 }
-
 
   for(let i = 0; i <= maxIndex && i < totalboxes; i++) {
     boxlist.appendChild(allBoxes[i]);
@@ -181,6 +177,19 @@ function updateLevel(pos) {
 }
 
 
+
+if (boxes[position].classList.contains("trap")) {
+  showToast("Oh no! You landed on a trap ☠️");
+  position = 0;
+  scoreEl.textContent = "0";
+  boxes[position].classList.add("trap");
+  setTimeout(()=> {
+  boxes[position].classList.remove("trap")
+  },1000)
+} else if (boxes[position].classList.contains("safezone")) {
+  showToast("🟢 Safe Zone!");
+  boxes[position].classList.add("safezone");
+}
 
 function showToast(message) {
   const x = document.getElementById("snackbar");
