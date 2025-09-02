@@ -43,7 +43,7 @@ for(let i = 0; i < totalboxes; i++){
   box.className = "box";
   box.textContent = i;
 
-  if(trapsPositions.includes(i)){
+  if(trapsPositions.includes(position)){
   //box.classList.remove("trap");
   //setTimeout(()=>{
    //box.classList.add("trap")
