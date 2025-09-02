@@ -155,10 +155,6 @@ function updateVisibleBoxes(level) {
   else if (level === 3) maxIndex = 30;
   else if (level === 4) maxIndex = 41;
 
-  
-
-
- 
   for(let i = 0; i <= maxIndex && i < totalboxes; i++) {
     boxlist.appendChild(allBoxes[i]);
   }
@@ -178,14 +174,6 @@ function updateLevel(pos) {
   Level.textContent = level;
   updateVisibleBoxes(level, pos);
 }
-
-
-
-if (safeZones.includes(position)) {
-  showToast("Safe Zone! 🟢");
-
-}
-
 
 function showToast(message) {
   const x = document.getElementById("snackbar");
