@@ -42,20 +42,6 @@ for(let i = 0; i < totalboxes; i++){
   const box = document.createElement("li");
   box.className = "box";
   box.textContent = i;
-
-  if(trapsPositions.includes(position)){
-  //box.classList.remove("trap");
-  //setTimeout(()=>{
-   //box.classList.add("trap")
-  //},1000)
-  
-  box.style.border="2px dashed red"
-  position=0;
-  scoreEl.textContent="0";
-  showToast("Oh no You landed on trap!")
-  }
-
-  
   boxes.push(box);
   boxlist.appendChild(box);
 
