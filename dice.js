@@ -30,6 +30,7 @@ const quit = document.getElementById("quit");
 const startBtn = document.getElementById("startBtn");
 const okBtn = document.getElementById("okBtn");
 const cancelBtn = document.getElementById("cancelBtn");
+const Level=document.getElementById("levelscore");
 const trapsPositions = [2,3,7,9,12,16,20,22,25,28,31,35,37,39];    
 
 
