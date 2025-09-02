@@ -118,10 +118,6 @@ rollBtn.addEventListener("click", () => {
       customAlert.style.display = "none";
     };
   }
-
-  
- 
- 
   for (let i = 0; i < 6; i++) {
     const el = document.getElementById(`dice${i}`);
     if (el) {
