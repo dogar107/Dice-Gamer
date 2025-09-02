@@ -176,9 +176,6 @@ function updateLevel(pos) {
   Level.textContent = level;
   updateVisibleBoxes(level, pos);
 }
-
-
-
 function showToast(message) {
   const x = document.getElementById("snackbar");
   x.textContent = message;
