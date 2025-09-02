@@ -479,6 +479,10 @@ li{
 background: #333;
 }
 
-#traps{
+.traps{
 background-color: red;
+}
+
+.safezone{
+  background-color: green;
 }

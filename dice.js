@@ -35,8 +35,8 @@ const quit = document.getElementById("quit");
 const startBtn = document.getElementById("startBtn");
 const okBtn = document.getElementById("okBtn");
 const cancelBtn = document.getElementById("cancelBtn");
-const trapsPositions = [5, 12, 19, 27, 35]; 
-const safeZones = [3, 8, 15, 22, 30];   
+const trapsPositions = [2,3,7,9,12,16,20,28,39]; 
+const safeZones = [5, 8, 15, 22, 29, 40];   
 
 
 const boxes = []; 
@@ -46,7 +46,20 @@ for(let i = 0; i < totalboxes; i++){
   const box = document.createElement("li");
   box.className = "box";
   box.textContent = i;
+  if (trapsPositions.includes(i)) {
+    box.classList.remove('traps')
+    setTimeout(()=>{
+     box.classList.add('traps')
+     },1000)
+    scoreEl.textContent="0";
+  }else if (safeZones.includes(i)){
+     box.classList.remove('safezone');
+     setTimeout(()=>{
+     box.classList.add('safezone')
+     },1000)
+  }
   boxes.push(box);
+  boxlist.appendChild(box);
 }
 
 const allBoxes = boxes;
@@ -125,6 +138,14 @@ rollBtn.addEventListener("click", () => {
     };
   }
 
+   if (boxes[position].classList.contains('trap')) {
+      showToast("☠️ Trap! Back to Start.");
+      position = 0;
+      game.score = 0;
+    } else if (boxes[position].classList.contains('safe-zone')) {
+      showToast("🟢 Safe Zone!");
+    }
+
  
   for (let i = 0; i < 6; i++) {
     const el = document.getElementById(`dice${i}`);
@@ -139,7 +160,7 @@ rollBtn.addEventListener("click", () => {
   }
 });
 
-function updateVisibleBoxes(level, currentPosition) {
+function updateVisibleBoxes(level) {
   while (boxlist.firstChild) {
     boxlist.removeChild(boxlist.firstChild);
   }
@@ -151,7 +172,7 @@ function updateVisibleBoxes(level, currentPosition) {
   else if (level === 4) maxIndex = 41;
 
   
-  maxIndex = Math.max(maxIndex, currentPosition + 2);
+ // maxIndex = Math.max(maxIndex, currentPosition + 2);
 
  
   for(let i = 0; i <= maxIndex && i < totalboxes; i++) {
