@@ -44,16 +44,24 @@ for(let i = 0; i < totalboxes; i++){
   box.className = "box";
   box.textContent = i;
 
-  if(safeZones.includes(position)){
-  box.classList.add("safezone")
-  }else{
-  box.classList.remove("safezone")
+  if(trapsPositions.includes(i) && trapsPositions.includes(position)){
+  box.classList.remove("trap");
+  setTimeout(()=>{
+   box.classList.add("trap")
+  },1000)
+  
+  //box.style.border="2px dashed red"
+  position=0;
+  scoreEl.textContent="0";
   }
+
   
   boxes.push(box);
   boxlist.appendChild(box);
 
 }
+
+
 
 
 
@@ -178,14 +186,9 @@ function updateLevel(pos) {
 
 
 
-if (boxes[position].classList.contains("trap")) {
-  showToast("Oh no! You landed on a trap ☠️");
-  position = 0;
-  scoreEl.textContent = "0";
-} else if (boxes[position].classList.contains("safezone")) {
-  showToast("🟢 Safe Zone!");
-  boxes[position].classList.add("safezone");
-}
+
+
+
 
 function showToast(message) {
   const x = document.getElementById("snackbar");
