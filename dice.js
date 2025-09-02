@@ -100,6 +100,7 @@ rollBtn.addEventListener("click", () => {
     updateLevel(position);
   }
 
+
   if (position >= totalboxes) {
     position = totalboxes - 1;
     showToast("Game Over!☠️");
@@ -117,6 +118,9 @@ rollBtn.addEventListener("click", () => {
       customAlert.style.display = "none";
     };
   }
+
+  
+ 
  
   for (let i = 0; i < 6; i++) {
     const el = document.getElementById(`dice${i}`);
@@ -125,7 +129,18 @@ rollBtn.addEventListener("click", () => {
     }
   }
 
- 
+  trapsPositions.forEach(Pos =>{
+  if( position === Pos){
+  boxes[Pos].classList.add("trap");
+  showToast("Oh no! You hit on trap!");
+  setTimeout(()=>{
+  resetGame();
+  game.reset();
+  boxes[Pos].classList.remove("trap");
+
+  }, 1000)
+  }
+  })
   if (allBoxes[position]) {
     allBoxes[position].appendChild(circleDiv);
   }
@@ -165,6 +180,8 @@ function updateLevel(pos) {
   Level.textContent = level;
   updateVisibleBoxes(level, pos);
 }
+
+
 
 function showToast(message) {
   const x = document.getElementById("snackbar");
