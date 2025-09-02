@@ -144,7 +144,7 @@ rollBtn.addEventListener("click", () => {
   showToast("Congratulations! You Win 🏆");
   resetGame();
   game.reset();
-  circleDiv.innerHTML="";
+  circleDiv.style.display="none";
   }
   
 
