@@ -18,6 +18,7 @@ const game = new Game();
 let position = 0;
 let gameStarted = false;
 const totalboxes = 42;
+
 const rollBtn = document.getElementById("rollbtn");
 const boxlist = document.querySelector(".box-list"); 
 const scoreEl = document.getElementById("score");
@@ -31,15 +32,24 @@ const totalscore = document.getElementById("totalscore");
 const dice0 = document.getElementById("dice0");
 const board = document.getElementById("ii");
 const quit = document.getElementById("quit");
-const start = document.getElementById("start");
 const startBtn = document.getElementById("startBtn");
 const okBtn = document.getElementById("okBtn");
 const cancelBtn = document.getElementById("cancelBtn");
-const traps=document.getElementById("trap");
-const boxes = document.querySelectorAll(".box");
-const allBoxes=Array.from(boxlist);
+
+const boxes = []; 
+
+
+for(let i = 0; i < totalboxes; i++){
+  const box = document.createElement("li");
+  box.className = "box";
+  box.textContent = i;
+  boxes.push(box);
+}
+
+const allBoxes = boxes;
 
 customAlert1.style.display = "block";
+
 startBtn.onclick = () => {
   customAlert1.style.display = "none";
   btn.style.filter = "none";
@@ -47,7 +57,7 @@ startBtn.onclick = () => {
   dice0.style.filter = "none";
   board.style.filter = "none";
 
-  updateVisibleBoxes(1); 
+  updateVisibleBoxes(1, position);
 };
 
 quit.onclick = () => {
@@ -64,7 +74,7 @@ function resetGame() {
   gameStarted = false;
   scoreEl.textContent = "0";
   Level.textContent = "";
-  updateVisibleBoxes(1); 
+  updateVisibleBoxes(1, position);
 }
 resetbtn.addEventListener("click", resetGame);
 
@@ -78,7 +88,7 @@ rollBtn.addEventListener("click", () => {
       scoreEl.textContent = "0";
       Level.textContent = "1";
       circleDiv.style.display = "block";
-      updateVisibleBoxes(1);
+      updateVisibleBoxes(1, position);
     } else {
       for (let j = 0; j < 6; j++) {
         const el = document.getElementById(`dice${j}`);
@@ -94,8 +104,8 @@ rollBtn.addEventListener("click", () => {
     updateLevel(position);
   }
 
-  if (position >= boxes.length) {
-    position=boxes.length-1
+  if (position >= totalboxes) {
+    position = totalboxes - 1;
     showToast("Game Over!☠️");
     scoreEl.textContent = "0";
     game.reset();
@@ -112,6 +122,7 @@ rollBtn.addEventListener("click", () => {
     };
   }
 
+ 
   for (let i = 0; i < 6; i++) {
     const el = document.getElementById(`dice${i}`);
     if (el) {
@@ -119,95 +130,45 @@ rollBtn.addEventListener("click", () => {
     }
   }
 
-  
-
+ 
   if (allBoxes[position]) {
     allBoxes[position].appendChild(circleDiv);
   }
 });
 
-function updateVisibleBoxes(level) {
-  let start = 0;
-  let end = 11;
-
-  if (level === 2) {
-    start = 0;
-    end = 20;
-  } else if (level === 3) {
-    start = 0;
-    end = 30;
-  } else if (level === 4) {
-    start = 0;
-    end = 42;
-  }
-
-
+function updateVisibleBoxes(level, currentPosition) {
   while (boxlist.firstChild) {
     boxlist.removeChild(boxlist.firstChild);
   }
- for(let i = 1;i<totalboxes;i++){
- const box = document.createElement("li");
-      box.className = "box";
-      box.textContent=`${i}`
-      boxlist.appendChild(box);
-      if(boxlist.firstChild){
-      boxlist.firstChild.textContent=""
-      }
-     
+
+ 
+  let maxIndex = 10; 
+  if (level === 2) maxIndex = 20;
+  else if (level === 3) maxIndex = 30;
+  else if (level === 4) maxIndex = 41;
+
   
-      }
-    }
-      
-
+  maxIndex = Math.max(maxIndex, currentPosition + 2);
 
  
- 
-  for (let i = start; i <= end && i <totalboxes ; i++) {
-   boxlist.appendChild(allBoxes[i]);
-    const currentBox = allBoxes[position];
-  if (currentBox && currentBox.id === "trap") {
-    currentBox.style.backgroundColor = "red";
-    gameStarted=true;
-    setTimeout(()=>{
-    currentBox.style.backgroundColor = "";
-    scoreEl.textContent="0"
-    updateVisibleBoxes(1);
-    },1000)
-    showToast("You landed on a TRAP! ☠️");
-    resetGame()
-    //game.reset;
-   
-    } else if (currentBox && currentBox.id === "safezone") {
-    currentBox.style.backgroundColor = "green";
-    showToast("Safe Zone ☘️ ");
-    setTimeout(()=>{
-    currentBox.style.backgroundColor = "";
-    },1000)
-  }else if(position===41){
-  showToast("You Win! 🎌");
-  circleDiv.style.display="none";
-  scoreEl.textContent="0";
-  customAlert1.style.display="block";
-  resetGame()
-  game.reset()
+  for(let i = 0; i <= maxIndex && i < totalboxes; i++) {
+    boxlist.appendChild(allBoxes[i]);
   }
 }
 
-
 function updateLevel(pos) {
-  let level = "";
-  
-  if (pos ===30 || pos >= 31) {
+  let level = 1;
+
+  if (pos >= 31) {
     level = 4;
-  } else if (pos===20 || pos >= 21) {
+  } else if (pos >= 21) {
     level = 3;
-  } else if (pos===10 || pos >= 11) {
+  } else if (pos >= 11) {
     level = 2;
-  }else if(pos===0 || pos >=0){
-    level = 1
   }
+
   Level.textContent = level;
-  updateVisibleBoxes(level);
+  updateVisibleBoxes(level, pos);
 }
 
 function showToast(message) {
@@ -218,3 +179,7 @@ function showToast(message) {
     x.classList.remove("show");
   }, 3000);
 }
+
+
+
+ 
