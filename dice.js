@@ -44,6 +44,7 @@ for(let i = 0; i < totalboxes; i++){
   box.textContent = i;
   boxes.push(box);
   boxlist.appendChild(box);
+  boxes[0].textContent="";
 
 }
 
@@ -129,6 +130,7 @@ rollBtn.addEventListener("click", () => {
   if( position === Pos){
   boxes[Pos].classList.add("trap");
   showToast("Oh no! You hit on trap!");
+  circleDiv.style.display="none";
   setTimeout(()=>{
   resetGame();
   game.reset();
@@ -137,6 +139,15 @@ rollBtn.addEventListener("click", () => {
   }, 1000)
   }
   })
+
+  if(position===41){
+  showToast("Congratulations! You Win 🏆");
+  resetGame();
+  game.reset();
+  circleDiv.innerHTML="";
+  }
+  
+
   if (allBoxes[position]) {
     allBoxes[position].appendChild(circleDiv);
   }
