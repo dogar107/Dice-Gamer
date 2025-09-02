@@ -150,9 +150,15 @@ function updateVisibleBoxes(level) {
 
  
   let maxIndex = 10; 
-  if (level === 2) maxIndex = 20;
-  else if (level === 3) maxIndex = 30;
-  else if (level === 4) maxIndex = 41;
+  if (level === 2) {
+  maxIndex = 20;
+}
+  else if (level === 3){ 
+  maxIndex = 30
+}else if (level === 4) {
+  maxIndex = 41;
+}
+
 
   for(let i = 0; i <= maxIndex && i < totalboxes; i++) {
     boxlist.appendChild(allBoxes[i]);
