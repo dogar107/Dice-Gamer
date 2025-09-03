@@ -524,3 +524,12 @@ top: 50px;
 .safezone{
   background-color: green;
 }
+
+.footer{
+    background-color: gray;
+    color: whitesmoke;
+    height: 51px;
+    justify-content: center;
+    display: flex;
+
+}
